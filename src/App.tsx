@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
-export function App() {
+function App() {
   return (
     <div className="App">
       <header className="App-header">
