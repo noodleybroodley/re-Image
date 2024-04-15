@@ -4,7 +4,7 @@ import './App.css'
 export default function App() {
 
   return (
-    <div>
+    <div className="Homepage">
       <div className="Title">
         <div>re-Image</div>
         <CameraAltIcon data-testid="logo" fontSize='inherit'/>
