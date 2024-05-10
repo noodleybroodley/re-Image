@@ -1,6 +1,7 @@
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './App.css'
 import { useState } from 'react';
+import FileInfoBar from './components/FileInfoBar/FileInfoBar';
 
 export default function App() {
   const [file, setFile] = useState<File>();
@@ -39,7 +40,10 @@ export default function App() {
         <CameraAltIcon data-testid="logo" fontSize='inherit'/>
       </div>
       <div className="Subtitle">The Simple Image Converter</div>
-      <button className="ChooseFileButton" onClick={getTheFile}>Choose File...</button>
+      {file ?
+        <FileInfoBar file={file} setFile={setFile}/>
+        :
+        <button className="ChooseFileButton" onClick={getTheFile}>Choose File...</button>}
     </div>
   )
 }
