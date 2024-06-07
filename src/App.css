@@ -24,14 +24,14 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-width: 1vw;
+  min-width: 333px;
   min-height: 1vh;
 }
 
 .Title {
   font-family: JollyLodger-Regular;
-  font-size: clamp(10vh,20vh,20vh);
-  display: flex;
+  font-size: clamp(10vh,10vh,20vh);
+  display: inline-flex;
   align-items: center;
 }
 

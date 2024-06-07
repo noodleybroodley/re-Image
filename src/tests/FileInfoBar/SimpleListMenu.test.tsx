@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import { describe, beforeEach, test, expect} from 'vitest';
-import SimpleListMenu from "../../components/SimpleListMenu";
+import SimpleListMenu from "../../components/SimpleListMenu/SimpleListMenu";
 
 
 describe("SimpleListMenu Test", ()=>{
