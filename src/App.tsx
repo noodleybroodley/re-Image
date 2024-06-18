@@ -30,7 +30,7 @@ export default function App() {
 
     // get file contents
     const fileData = await fileHandle.getFile();
-    console.log(fileData)
+    console.log(fileData);
     setFile(fileData);
   }
 

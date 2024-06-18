@@ -1,5 +1,4 @@
 import CloseIcon from '@mui/icons-material/Close';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import './FileInfoBar.css';
 import SplitButton from '../SplitButton/SplitButton';
@@ -10,11 +9,10 @@ interface Props {
 }
 
 export default function FileInfoBar (props: Props) {
-	const [progress, setProgress] = useState<number>(0);
 	const [thumbnailURL, setThumbnailURL] = useState<string | null | ArrayBuffer>();
 	const reader = new FileReader();
     reader.onload = function () {
-      var dataURL = reader.result;
+      const dataURL = reader.result;
       setThumbnailURL(dataURL);
     };
     reader.readAsDataURL(props.file);
@@ -28,11 +26,9 @@ export default function FileInfoBar (props: Props) {
 		<div className="InfoBarContainer">
 			<CloseIcon className="CloseIcon" data-testid="CloseIcon" onClick={()=>{props.setFile(undefined)}}/>
 			<div className="InfoBar" data-testid="InfoBar">
-				{/* <CircularProgress data-testid="ProgressBar" className="ProgressBar" value={progress}/> */}
-				{/* {!!thumbnailURL ? <img className={"FileThumbnail"} src={`${thumbnailURL}`}/> : <></>} */}
 				<img className={"FileThumbnail"} src={`${thumbnailURL}`}/>
 				{fileName}
-				<SplitButton/>
+				<SplitButton file={props.file}/>
 			</div>
 		</div>
 	)

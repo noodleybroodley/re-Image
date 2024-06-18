@@ -8,16 +8,24 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import { convertFile, downloadFile, getOptions } from '../../utils/utils';
 
-const options = ['png','jpg'];
+interface Props {
+  file: File
+}
 
-export default function SplitButton() {
+export default function SplitButton(props: Props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const fileType = props.file.type.split('/')[1];
+  const options = getOptions(fileType);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    const newFile = convertFile(props.file,options[selectedIndex]);
+    console.log(newFile);
+    let downloadURL = URL.createObjectURL(newFile);
+    downloadFile(downloadURL,newFile.name);
   };
 
   const handleMenuItemClick = (
@@ -86,7 +94,6 @@ export default function SplitButton() {
                   {options.map((option, index) => (
                     <MenuItem
                       key={option}
-                      
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
