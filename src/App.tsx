@@ -18,7 +18,7 @@ export default function App() {
     excludeAcceptAllOption: true,
     multiple: false,
   };
-  
+
   /** Opens the system file picker and saves it to the "file" variable.
    * @param none
    * @returns none
@@ -27,9 +27,10 @@ export default function App() {
     // Open file picker and destructure so to grab the first element of the returned list
     //@ts-ignore
     const [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-  
+
     // get file contents
     const fileData = await fileHandle.getFile();
+    console.log(fileData)
     setFile(fileData);
   }
 
@@ -37,11 +38,11 @@ export default function App() {
     <div className="Homepage">
       <div className="Title">
         <div>re-Image</div>
-        <CameraAltIcon data-testid="logo" fontSize='inherit'/>
+        <CameraAltIcon data-testid="logo" fontSize='inherit' />
       </div>
       <div className="Subtitle">The Simple Image Converter</div>
       {file ?
-        <FileInfoBar file={file} setFile={setFile}/>
+        <FileInfoBar file={file} setFile={setFile} />
         :
         <button className="ChooseFileButton" onClick={getTheFile}>Choose File...</button>}
     </div>

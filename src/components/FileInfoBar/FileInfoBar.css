@@ -1,3 +1,12 @@
+.CloseIcon {
+	cursor: pointer;
+}
+
+.FileThumbnail {
+	height: 40px;
+	width: 40px;
+}
+
 .InfoBarContainer {
 	display: inline-flex;
 	align-items: center;
@@ -12,7 +21,7 @@
 	justify-content: space-evenly;
 	height: 60px;
 	width: 33.3vw;
-	min-width: 277.06px;
+	min-width: 290px;
 }
 
 .ProgressBar {
