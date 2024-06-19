@@ -44,7 +44,8 @@ export default function App() {
       {file ?
         <FileInfoBar file={file} setFile={setFile} />
         :
-        <button className="ChooseFileButton" onClick={async ()=> await getTheFile()}>Choose File...</button>}
+        // <button className="ChooseFileButton" onClick={async ()=> await getTheFile()}>Choose File...</button>}
+        <input className="ChooseFileButton" >Choose File...</input>}
     </div>
   )
 }
