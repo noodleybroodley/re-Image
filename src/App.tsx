@@ -1,6 +1,7 @@
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './App.css'
 import { useState } from 'react';
+import FileInfoBar from './components/FileInfoBar/FileInfoBar';
 
 export default function App() {
   const [file, setFile] = useState<File>();
@@ -10,14 +11,14 @@ export default function App() {
       {
         description: "Images",
         accept: {
-          "image/*": [".png", ".jpeg", ".jpg"],
-        },
+          "image/*": ['.png','.jpeg','.apng','.avif','.gif','.webp'],
+        }
       },
     ],
     excludeAcceptAllOption: true,
     multiple: false,
   };
-  
+
   /** Opens the system file picker and saves it to the "file" variable.
    * @param none
    * @returns none
@@ -26,9 +27,10 @@ export default function App() {
     // Open file picker and destructure so to grab the first element of the returned list
     //@ts-ignore
     const [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-  
+
     // get file contents
     const fileData = await fileHandle.getFile();
+    console.log(fileData);
     setFile(fileData);
   }
 
@@ -36,10 +38,13 @@ export default function App() {
     <div className="Homepage">
       <div className="Title">
         <div>re-Image</div>
-        <CameraAltIcon data-testid="logo" fontSize='inherit'/>
+        <CameraAltIcon data-testid="logo" fontSize='inherit' />
       </div>
       <div className="Subtitle">The Simple Image Converter</div>
-      <button className="ChooseFileButton" onClick={getTheFile}>Choose File...</button>
+      {file ?
+        <FileInfoBar file={file} setFile={setFile} />
+        :
+        <button className="ChooseFileButton" onClick={async ()=> await getTheFile()}>Choose File...</button>}
     </div>
   )
 }
