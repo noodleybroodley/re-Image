@@ -5,33 +5,13 @@ import FileInfoBar from './components/FileInfoBar/FileInfoBar';
 
 export default function App() {
   const [file, setFile] = useState<File>();
-  //define settings for file picker
-  const pickerOpts = {
-    types: [
-      {
-        description: "Images",
-        accept: {
-          "image/*": ['.png','.jpeg','.apng','.avif','.gif','.webp'],
-        }
-      },
-    ],
-    excludeAcceptAllOption: true,
-    multiple: false,
-  };
 
-  /** Opens the system file picker and saves it to the "file" variable.
-   * @param none
-   * @returns none
-  */
-  async function getTheFile() {
-    // Open file picker and destructure so to grab the first element of the returned list
-    //@ts-ignore
-    const [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-
-    // get file contents
-    const fileData = await fileHandle.getFile();
-    console.log(fileData);
-    setFile(fileData);
+  function getTheFile(){
+    const inputElement = document.getElementById("input") as HTMLInputElement;
+    const files = inputElement.files;
+    if(files!=null){
+      setFile(files[0]);
+    }
   }
 
   return (
@@ -41,10 +21,14 @@ export default function App() {
         <CameraAltIcon data-testid="logo" fontSize='inherit' />
       </div>
       <div className="Subtitle">The Simple Image Converter</div>
-      {file ?
+      {!!file ?
         <FileInfoBar file={file} setFile={setFile} />
         :
-        <button className="ChooseFileButton" onClick={async ()=> await getTheFile()}>Choose File...</button>}
+        <div className='ChooseFileButton'>
+          <label htmlFor="input">Choose File...</label>
+          <input id="input" type="file" accept="image/png,image/jpeg,image/apng,image/avif,image/gif,image/webp,image/heic" onChange={getTheFile}/>
+        </div>
+      }
     </div>
   )
 }
