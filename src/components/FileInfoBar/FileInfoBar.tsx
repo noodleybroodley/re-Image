@@ -26,9 +26,9 @@ export default function FileInfoBar (props: Props) {
 		<div className="InfoBarContainer">
 			<CloseIcon className="CloseIcon" data-testid="CloseIcon" onClick={()=>{props.setFile(undefined)}}/>
 			<div className="InfoBar" data-testid="InfoBar">
-				<img className={"FileThumbnail"} src={`${thumbnailURL}`}/>
+				<img className="FileThumbnail" data-testid="FileThumbnail" src={`${thumbnailURL}`}/>
 				{fileName}
-				<SplitButton file={props.file}/>
+				<SplitButton data-testid="SplitButton" file={props.file}/>
 			</div>
 		</div>
 	)

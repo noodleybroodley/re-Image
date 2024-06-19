@@ -11,8 +11,8 @@ export default function App() {
       {
         description: "Images",
         accept: {
-          "image/*": [".png", ".jpeg", ".jpg"],
-        },
+          "image/*": ['.png','.jpeg','.apng','.avif','.gif','.webp'],
+        }
       },
     ],
     excludeAcceptAllOption: true,
@@ -44,7 +44,7 @@ export default function App() {
       {file ?
         <FileInfoBar file={file} setFile={setFile} />
         :
-        <button className="ChooseFileButton" onClick={getTheFile}>Choose File...</button>}
+        <button className="ChooseFileButton" onClick={async ()=> await getTheFile()}>Choose File...</button>}
     </div>
   )
 }
