@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import { describe, beforeEach, test, expect} from 'vitest';
+import {render} from '@testing-library/react';
+import { describe, test, expect} from 'vitest';
 import FileInfoBar from '../../components/FileInfoBar/FileInfoBar';
 
 describe('FileInfoBar', ()=>{
