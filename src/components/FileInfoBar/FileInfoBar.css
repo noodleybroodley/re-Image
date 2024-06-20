@@ -1,5 +1,7 @@
 .CloseIcon {
 	cursor: pointer;
+	position: relative;
+  	top: 75px;
 }
 
 .FileThumbnail {
@@ -22,9 +24,10 @@
 	height: 60px;
 	width: 33.3vw;
 	min-width: 290px;
+	position: relative;
+  	top: 75px;
 }
 
-.ProgressBar {
-	min-width: 55px;
-	min-height: 55px;
+.DownloadButton {
+	cursor: pointer;
 }
