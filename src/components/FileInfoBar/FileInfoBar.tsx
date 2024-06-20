@@ -1,7 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import './FileInfoBar.css';
-import SplitButton from '../SplitButton/SplitButton';
 import React from 'react';
 import Selector from '../Selector/Selector';
 import { Download } from '@mui/icons-material';
